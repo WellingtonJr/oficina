@@ -1,6 +1,5 @@
 server:
     port: 8080
-
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/db_oficina
@@ -15,3 +14,8 @@ spring:
         properties:
             hibernate:
                 show_sql: true
+    # security:
+    #     user:
+    #         name: algafood
+    #         password: 123456
+        
