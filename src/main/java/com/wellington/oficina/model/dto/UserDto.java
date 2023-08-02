@@ -1,9 +1,9 @@
 package com.wellington.oficina.model.dto;
 
-import java.util.Set;
+import java.util.List;
 
 import com.wellington.oficina.model.Employee;
-import com.wellington.oficina.model.RoleModel;
+import com.wellington.oficina.model.enums.RoleType;
 
 import lombok.Data;
 
@@ -12,8 +12,7 @@ public class UserDto {
 
     private String username;
     private String password;
-    private String role;
     private Employee employee;
-    private Set<RoleModel> roles;
+    private List<RoleType> roles;
 
 }

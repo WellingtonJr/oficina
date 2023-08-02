@@ -19,11 +19,13 @@ import com.wellington.oficina.model.enums.RoleType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ROLES")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class RoleModel implements GrantedAuthority, Serializable {
 
     @Id

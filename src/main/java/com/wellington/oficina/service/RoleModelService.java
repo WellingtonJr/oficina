@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wellington.oficina.model.RoleModel;
+import com.wellington.oficina.model.enums.RoleType;
 import com.wellington.oficina.repository.RoleModelRepository;
 
 @Service
@@ -14,7 +15,7 @@ public class RoleModelService {
     @Autowired
     private RoleModelRepository roleModelRepository;
 
-    public Optional<RoleModel> findByRoleName(String roleName) {
+    public Optional<RoleModel> findByRoleName(RoleType roleName) {
         return roleModelRepository.findByRoleName(roleName);
     }
 

@@ -6,9 +6,10 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.wellington.oficina.model.RoleModel;
+import com.wellington.oficina.model.enums.RoleType;
 
 public interface RoleModelRepository extends JpaRepository<RoleModel, UUID> {
 
-    Optional<RoleModel> findByRoleName(String roleName);
+    Optional<RoleModel> findByRoleName(RoleType roleName);
 
 }

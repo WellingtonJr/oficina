@@ -3,13 +3,13 @@ package com.wellington.oficina.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wellington.oficina.model.dto.LoginDto;
 import com.wellington.oficina.model.dto.UserDto;
 import com.wellington.oficina.service.RoleModelService;
 import com.wellington.oficina.service.UserService;
@@ -24,21 +24,15 @@ public class AuthController {
     @Autowired
     RoleModelService roleModelService;
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @PostMapping("/register")
-    public ResponseEntity<Object> registerUser(@RequestBody @Validated LoginDto loginDto) {
-        if (userService.existsByUsername(loginDto.getUsername())) {
+    public ResponseEntity<Object> registerUser(@RequestBody @Validated UserDto dto) {
+        if (userService.existsByUsername(dto.getUsername())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists");
         }
-
-        loginDto.getRoles().forEach(role -> roleModelService.findByRoleName(role.getAuthority())
-                .orElseThrow(() -> new RuntimeException("Role not found")));
-
-        var user = new UserDto();
-        user.setUsername(loginDto.getUsername());
-        user.setPassword(loginDto.getPassword());
-        user.setRoles(loginDto.getRoles());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(dto));
     }
 
 }
