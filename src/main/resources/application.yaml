@@ -15,3 +15,10 @@ spring:
         properties:
             hibernate:
                 show_sql: true
+jwt:
+    secret: 561f6e2e760d61555c0fc77d28d1dbaa8a861e177cbda63fbdc485d7bded199390f058b0ed651626f42577e27c4f76603b6d0406bdb1aa9c05644e0e731f1d6d
+    expirationMs: 14400000
+    
+# jwtSecret: $2a$12$Pjip81wyiB5tZa.iVL0/YuLp2n8PSfHfc8VpaUiG.3lFfhcq7ST9O
+# jwtExpirationMs: 14400000
+
